@@ -1,0 +1,63 @@
+{
+  "name": "@inariwatch/capture-mcp",
+  "version": "0.1.0-alpha.0",
+  "description": "Local MCP dev-mode server for @inariwatch/capture. Reads recent errors from .inariwatch/errors.jsonl and exposes them over stdio JSON-RPC 2.0 so editors (Cursor, Claude Code, Continue) can debug locally without hitting the cloud. Spec: SKYNET_MASTER_PLAN.md piece 9.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "inariwatch-mcp": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js",
+      "default": "./dist/server.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test --no-warnings dist/test/*.test.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "inariwatch",
+    "capture",
+    "mcp",
+    "model-context-protocol",
+    "dev-mode",
+    "stdio"
+  ],
+  "author": "Jesus Bernal <info@jesusbr.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@inariwatch/capture": ">=0.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbita-pos/inariwatch-capture-mcp.git"
+  },
+  "homepage": "https://github.com/orbita-pos/inariwatch-capture-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/orbita-pos/inariwatch-capture-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
